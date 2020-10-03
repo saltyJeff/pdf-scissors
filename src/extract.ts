@@ -5,7 +5,7 @@ import { Parser } from 'expr-eval'
 
 const parser = new Parser()
 
-export default async function extract(file: string, idxStrs: string[], cmdObj: Command) {
+export default async function extract(file: string, idxStrs: string[], cmdObj: Command): Promise<void> {
     const outPath = cmdObj.output
     const doc = await openPdf(file)
 
@@ -41,7 +41,7 @@ export default async function extract(file: string, idxStrs: string[], cmdObj: C
 
     const outFile = await PDFDocument.create()
     const pages = await outFile.copyPages(doc, indicies)
-    for(let page of pages) {
+    for(const page of pages) {
         outFile.addPage(page)
     }
     await writePdf(outFile, outPath)

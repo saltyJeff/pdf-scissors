@@ -1,6 +1,6 @@
 import { PDFDocument } from 'pdf-lib'
 import { Command } from 'commander'
-import { openPdf, openPdfs, writePdf } from './utils'
+import { openPdf, writePdf } from './utils'
 
 interface PdfMetadata {
     author: string
@@ -13,16 +13,16 @@ interface PdfMetadata {
     modificationDate: Date
     title: string
 }
-export default async function metadata(files: string[], cmdObj: Command & Partial<PdfMetadata>) {
-    cmdObj.creationDate = tryParseDate(cmdObj.creationDate as any)
-    cmdObj.modificationDate = tryParseDate(cmdObj.modificationDate as any)
-    for(let file of files) {
+export default async function metadata(files: string[], cmdObj: Command & Partial<PdfMetadata>): Promise<void> {
+    cmdObj.creationDate = tryParseDate(cmdObj.creationDate as unknown as string)
+    cmdObj.modificationDate = tryParseDate(cmdObj.modificationDate as unknown as string)
+    for(const file of files) {
         const doc = await openPdf(file)
         await applyMetadata(doc, cmdObj)
         await writePdf(doc, file)
     }
 }
-const keys: Array<keyof PdfMetadata> = ['author', 'creator', 'keywords', 'language', 'producer', 'subject', 'creationDate', 'modificationDate', 'title']
+const keys: Array<keyof PdfMetadata> = [ 'author', 'creator', 'keywords', 'language', 'producer', 'subject', 'creationDate', 'modificationDate', 'title' ]
 async function applyMetadata(doc: PDFDocument, metadata: Partial<PdfMetadata>) {
     keys.forEach(key => {
         const val = metadata[key]
