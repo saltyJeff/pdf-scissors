@@ -2,11 +2,11 @@
     "compilerOptions": {
         "target": "ES6",
         "outDir": "dist",
-        "incremental": true,
         "moduleResolution": "node",
         "module": "commonjs",
         "strictNullChecks": true,
-        "esModuleInterop": true
+        "esModuleInterop": true,
+        "sourceMap": true
     },
     "include": [
         "src"

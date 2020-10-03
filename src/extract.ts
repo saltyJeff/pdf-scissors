@@ -1,9 +1,9 @@
 import { PDFDocument } from 'pdf-lib'
 import { Command } from 'commander'
 import { openPdf, writePdf } from './utils'
-import type MathJS from 'mathjs'
+import { Parser } from 'expr-eval'
 
-const math: MathJS.MathJsStatic = require('mathjs')
+const parser = new Parser()
 
 export default async function extract(file: string, idxStrs: string[], cmdObj: Command) {
     const outPath = cmdObj.output
@@ -22,14 +22,15 @@ export default async function extract(file: string, idxStrs: string[], cmdObj: C
     }
     // 2. is it a single mathematical expression?
     else if(idxStrs.length == 1) {
-        // we need to parse each expression as algebra, and then execute it
+        // we need to parse the expression as algebra, and then execute it
         // we use a math library so we don't do arbitrary code execution
+        const expr = parser.parse(idxStrs[0])
         const scope = {
             x: -1
         }
         indicies = allPossibleList.filter(v => {
             scope.x = v
-            return math.evaluate(idxStrs[0], scope)
+            return expr.evaluate(scope)
         })
     }
     // 3. "nani"

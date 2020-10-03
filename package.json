@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "commander": "^6.1.0",
-    "mathjs": "^7.3.0",
+    "expr-eval": "^2.0.2",
     "pdf-lib": "^1.11.1"
   },
   "bin": {
