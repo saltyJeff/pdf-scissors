@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import { program } from 'commander'
 program.version('0.0.1')
 
@@ -12,7 +14,8 @@ program
     .action(concat)
 program
     .command('extract <file> <indicies...>')
-    .description('Extracts the specified pages from a file by indicies (starting from zero)')
+    .description('Extracts the specified pages from a file by indicies (starting from zero). Alternatively, you can specify a '+
+        'mathematical expression involving "x". Pages will be included when the expression evalutes to true')
     .requiredOption('-o, --output <output>', 'Output path for the new PDF')
     .action(extract)
 program

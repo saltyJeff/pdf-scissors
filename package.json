@@ -6,12 +6,20 @@
   "author": "saltyJeff <saltyJeff@users.noreply.github.com>",
   "license": "MIT",
   "private": false,
+  "files": [
+    "dist"
+  ],
   "devDependencies": {
+    "@types/mathjs": "^6.0.5",
     "@types/node": "^14.11.2",
     "typescript": "^4.0.3"
   },
   "dependencies": {
     "commander": "^6.1.0",
+    "mathjs": "^7.3.0",
     "pdf-lib": "^1.11.1"
+  },
+  "bin": {
+    "pdf-scissors": "./dist/index.js"
   }
 }
