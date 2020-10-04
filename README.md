@@ -5,9 +5,9 @@ PDF scissors is a small CLI wrapper around [pdf-lib](https://www.npmjs.com/packa
 The CLI is designed to allow you to cut, rotate, and glue back together the pages of a PDF.
 
 ## Installation
-Right now Github's NPM repository is [demanding authentication, even for public repos](https://github.community/t/download-from-github-package-registry-without-authentication/14407/61), and I don't want to release my real email into the world using the NPM repo. To install this program:
+Right now Github's NPM registry  is [demanding authentication, even for public repos](https://github.community/t/download-from-github-package-registry-without-authentication/14407/61), and I don't want to release my real email into the world using the global NPM registry. To install this program:
 1. Clone this repo
-1. In the root, execute `yarn && npx run tsc && yarn link`, or `npm install && npx run tsc && npm link`
+1. In the root, execute `yarn && npx tsc && yarn link`, or `npm install && npx tsc && npm link`
 1. You should be able to globally access pdf-scissors now!
 
 ## Help
