@@ -1,11 +1,15 @@
 {
-  "name": "pdf-scissors",
+  "name": "@saltyJeff/pdf-scissors",
   "version": "1.0.0",
   "description": "A command line tool for performing bulk operations on PDFs",
   "main": "dist/index.js",
   "author": "saltyJeff <saltyJeff@users.noreply.github.com>",
   "license": "MIT",
   "private": false,
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/saltyJeff/pdf-scissors.git"
+  },
   "files": [
     "dist"
   ],
@@ -27,6 +31,8 @@
   },
   "scripts": {
     "lint": "npx eslint . --ext .ts",
-    "lint:fix": "npx eslint . --ext .ts --fix"
-  }
+    "lint:fix": "npx eslint . --ext .ts --fix",
+    "prepublishOnly": "npx tsc && npm run lint:fix"
+  },
+  "publishConfig": { "registry": "https://npm.pkg.github.com/" }
 }
