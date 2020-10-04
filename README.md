@@ -4,8 +4,6 @@ PDF scissors is a small CLI wrapper around [pdf-lib](https://www.npmjs.com/packa
 
 The CLI is designed to allow you to cut, rotate, and glue back together the pages of a PDF.
 
-## Installation
-
 ## Help
 You can find more details by running the standard
 
